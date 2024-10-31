@@ -147,8 +147,24 @@ eval "$(pyenv init -)"
 export PATH="/opt/homebrew/opt/rubybin:$PATH"
 
 # fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 alias s="fzf" # s for search
 alias vs='vim $(fzf)' # vs for vim search
 
+
+# pnpm
+export PNPM_HOME="/Users/timrbula/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+source /Users/timrbula/.config/op/plugins.sh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/timrbula/.cache/lm-studio/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
