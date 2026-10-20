@@ -66,7 +66,7 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # -----------------------------------------------------------------------------
 source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+export FZF_DEFAULT_OPTS="--preview '[ -f {} ] && bat --style=numbers --color=always --line-range :500 {} || echo {}'"
 
 # -----------------------------------------------------------------------------
 # Aliases
