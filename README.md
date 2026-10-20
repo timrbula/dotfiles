@@ -1,6 +1,4 @@
-# Dotfiles
-
-Managed via [yadm](https://yadm.io/)
+dotfiles and config for my macOS setup
 
 ## Vim
 
