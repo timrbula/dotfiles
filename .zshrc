@@ -8,6 +8,17 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # -----------------------------------------------------------------------------
+# Completions (must be before compinit)
+# -----------------------------------------------------------------------------
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+autoload -Uz compinit && compinit
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}=A-Z'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' description format '%F{yellow}-- %d --%f'
+
+# -----------------------------------------------------------------------------
 # vite-plus (node, pnpm, bun)
 # -----------------------------------------------------------------------------
 export VITE_PLUS_HOME="$HOME/.local/share/vite-plus"
@@ -44,14 +55,10 @@ setopt HIST_IGNORE_SPACE
 setopt SHARE_HISTORY
 
 # -----------------------------------------------------------------------------
-# Completion
-# -----------------------------------------------------------------------------
-autoload -Uz compinit && compinit
-
-# -----------------------------------------------------------------------------
 # Shell plugins (via homebrew)
 # -----------------------------------------------------------------------------
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # -----------------------------------------------------------------------------
@@ -63,7 +70,8 @@ export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-ra
 
 # -----------------------------------------------------------------------------
 # Aliases
-# -----------------------------------------------------------------------------alias ll="ls -lh"
+# -----------------------------------------------------------------------------
+alias ll="ls -lh"
 alias la="ls -lah"
 alias s="fzf"
 alias vs='vim $(fzf)'
